@@ -92,8 +92,8 @@ if language == 'Français':
     with col1:
         def user_input():
             input_var1 = st.slider('Précipitation', 0, 500, 500)
-            input_var2 = st.slider('Température maximale moyenne', 29, 11, 40)
-            input_var3 = st.slider('Humidité relative maximale', 0, 100, 100)
+            input_var2 = st.slider('Température ', 29, 11, 100)
+            input_var3 = st.slider('Humidité relative ', 0, 100, 100)
             data = {'Prec_Average': input_var1,
                     'Average_Temperature_Max': input_var2,
                     'Average_RH_Max': input_var3}
@@ -101,6 +101,7 @@ if language == 'Français':
             return input_data
         df = user_input()
         prediction = svr_model.predict(df)
+        prediction=prediction*0.39318
         st.write("Incidence du Paludisme:", "{:.2f}".format(prediction[0]), "%")
 
         if (prediction[0] >= 0 and prediction[0] < 5):
