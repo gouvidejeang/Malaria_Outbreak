@@ -120,7 +120,7 @@ if language == 'Français':
         df = user_input()
         prediction = svr_model.predict(df)
         # Add remaining 0.39318 to the initial prediction
-        prediction = prediction * 2.0039318
+        prediction = prediction *1.0039318 + prediction
         st.write("Incidence du Paludisme:", "{:.2f}".format(prediction[0]), "%")
 
         if (prediction[0] >= 0 and prediction[0] < 5):
